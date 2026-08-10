@@ -1,0 +1,170 @@
+:root {
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text-main: #0f172a;
+  --color-text-muted: #475569;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-border: rgba(15, 23, 42, 0.06);
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+
+  --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  line-height: 1.6;
+  color: var(--texte);
+  background: var(--color-bg);
+  padding: var(--espace);
+}
+
+main,
+header,
+footer {
+  padding: 0 var(--space-2);
+}
+
+/* ======================
+* header
+* =====================*/
+header {
+  width: 100%;
+  background-color: var(--color-surface);
+  padding: var(--space-2) var(--space-1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-1);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+header .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+header form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+header input,
+header select {
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background-color: lightgray;
+  outline: none;
+  transition: var(--transition-fast);
+}
+header input:hover,
+header select:hover,
+header input:focus,
+header select:focus {
+  border: 1px solid var(--color-accent-hover);
+}
+
+header input:focus,
+header select:focus {
+  background-color: var(--color-surface);
+}
+/* ======================
+* sortie dynamique
+* =====================*/
+#sortie {
+  padding: var(--space-2);
+}
+
+/* ======================
+* cards
+* =====================*/
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-1);
+  width: fit-content;
+  margin: 0 auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  max-width: 300px;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+}
+
+.card .card-body {
+  padding: var(--space-1);
+}
+
+img {
+  display: inline-flex;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 2rem;
+  }
+}
+
+/* ======================
+* footer
+* =====================*/
+
+footer {
+  padding: var(--space-2) var(--space-1);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+
+}
+
+footer p {
+  margin-inline: auto;
+}

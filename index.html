@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur d'IMC — Akieni Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="entete">
+        <div class="text">
+            <h1>explorateur de pays</h1>
+            <p class="sous-titre">Semaine 9 — Projet avancé</p>
+        </div>
+        <form action="#" class="research">
+            <input type="text" name="country" id="country" placeholder="Pays">
+
+            <select name="region" id="region">
+                <option value=""> -- region -- </option>
+                <option value="1">Afrique</option>
+                <option value="2">Europe</option>
+                <option value="3">Asie</option>
+                <option value="4">Amerique</option>
+                <option value="5">Océanie</option>
+            </select>
+
+            <select name="region" id="region">
+                <option value=""> -- population -- </option>
+                <option value="ASD">Croissante</option>
+                <option value="DEC">Decroissant</option>
+            </select>
+        </form>
+    </header>
+    <main>
+        <div id="sortie"><!-- le JavaScript écrit ici -->
+            <p class="error-massage">aucune correspondance trouvée.</p>
+            <article class="card">
+                <img src="https://placehold.co/600x400" alt="drapeau">
+                <div class="card-body">
+                    <h2>nom</h2>
+                    <p><strong>Capitale</strong></p>
+                    <p><strong>population</strong>Hbts</p>
+                    <p><strong>langue</strong></p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+    <footer class="pied">
+        <p>Akieni Academy — Cohorte 2 — 2026 | donnees fournies par <a href="http://" target="_blank"
+                rel="noopener noreferrer">restcountries api.</a></p>
+    </footer>
+    <script src="pays.js"></script>
+</body>
+
+</html>
