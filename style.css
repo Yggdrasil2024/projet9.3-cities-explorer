@@ -66,17 +66,23 @@ footer {
 * =====================*/
 header {
   width: 100%;
-  background-color: var(--color-surface);
+  max-width: 1350px;
+  margin-top: var(--space-1);
+  margin-inline: auto;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
   padding: var(--space-2) var(--space-1);
-
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: var(--space-1);
   position: sticky;
-  top: 0;
-  border-bottom: 1px solid var(--color-border);
+  top: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
 }
 
 header .text {
@@ -118,7 +124,7 @@ header select:focus {
 @media screen and (min-width: 1024px) {
   header {
     width: 100%;
-    background-color: var(--color-surface);
+    /*background-color: var(--color-surface);*/
     padding: var(--space-1) var(--space-2);
 
     display: flex;
@@ -171,32 +177,21 @@ header select:focus {
 * sortie dynamique
 * =====================*/
 #sortie {
-  width:;
   padding: var(--space-2);
   display: grid;
-  width: 98%;
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
-@media screen and (min-width: 379px) {
-  #sortie {
-    width: 90%;
-    margin-inline: auto;
-  }
-}
-
-@media screen and (min-width: 379px) {
-  #sortie {
-    width: 80%;
-    margin-inline: auto;
-  }
-}
 /* ======================
 * message d'erreur
 * =====================*/
 
 .error-massage {
+  display: block;
   margin-top: 12rem;
   margin-bottom: 12rem;
   margin-inline: auto;
@@ -260,3 +255,43 @@ footer p {
   margin-inline: auto;
   text-align: center;
 }
+
+/* ======================
+* real error
+* =====================*/
+
+.real-error {
+  margin-inline: auto;
+}
+
+.real-error p {
+  padding: var(--space-2);
+  margin-bottom: 12px;
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-left: 5px solid #dc2626;
+}
+
+.real-error a {
+  padding: var(--space-1);
+  display: inline-block;
+  background-color: var(--color-accent);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  color: var(--color-surface);
+}
+
+.real-error a:hover {
+  box-shadow: var(--shadow);
+}
+
+.real-error a:focus {
+  transform: translateY(-4px);
+}
+
+.real-error:hover,
+.real-error:focus {
+  transform: none;
+}
+
