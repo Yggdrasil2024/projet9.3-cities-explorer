@@ -6,6 +6,20 @@ function afficher(html) {
 
 //declaration des constantes
 const POPULATION = "ASC";
-const REGION = ["Afrique", "Europe", ]
+const REGION = [
+  "Afrique",
+  "Europe",
+  "Amerique",
+  "Asie",
+  "Oceanie",
+  "Arctique",
+  "Antarctique",
+];
+const PLACEHOLDER_CARD = `<article class="card loading-cards">
+<div class="placeholder"></div>
+<p><strong>Capitale</strong></p>
+<p><strong>Capitale</strong></p>
+</article>`;
+
 
 
