@@ -4,3 +4,8 @@ function afficher(html) {
   sortie.innerHTML += html;
 }
 
+//declaration des constantes
+const POPULATION = "ASC";
+const REGION = ["Afrique", "Europe", ]
+
+
