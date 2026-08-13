@@ -67,7 +67,7 @@ const getAllCountries = async () => {
         });
       });
     } else {
-      throw `data est de type ${typeof data} `;
+      throw `une erreur s'est produite au niveau de la transformation des donnée en array`;
     }
 
     return true;
@@ -84,6 +84,20 @@ const getAllCountries = async () => {
     return false;
   }
 };
+
+
+/**
+ * fonction pour rengar
+ * @param {string} POPULATION - croissante ou decroissante
+ * @returns {Array} - pays rangé
+ */
+const sortByPopulation = (POPULATION) {
+  return POPULATION === "ASC" ? PAYS.sort((a, b) => a.population - b.population) : PAYS.sort((a, b) => b.population - a.population);
+}
+
+
+
+
 
 getAllCountries();
 console.log(PAYS);
