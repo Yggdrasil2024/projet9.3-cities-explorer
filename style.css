@@ -63,11 +63,8 @@
 }
 
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
-  line-height: 1.6;
+  font-family: "Poppins", "Roboto", Helvetica, sans-serif;
+  line-height: 1.5;
   color: var(--trip-black);
   background: var(--trip-white);
   padding: 0;
@@ -254,6 +251,8 @@ header select:focus {
 
 .card h2 {
   color: var(--trip-pine);
+  line-height: 1.2;
+  margin-bottom: var(--space-1);
 }
 
 img {
