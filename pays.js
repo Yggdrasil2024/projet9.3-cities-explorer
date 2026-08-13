@@ -5,16 +5,15 @@ function afficher(html) {
 }
 
 //declaration des constantes
-const POPULATION = "ASC";
-const REGION = [
-  "Afrique",
-  "Europe",
-  "Amerique",
-  "Asie",
-  "Oceanie",
-  "Arctique",
-  "Antarctique",
-];
+const POPULATION = { ASC: "ASC", DEC: "DEC" };
+const REGION = {
+  AFRICA: "Africa",
+  AMERICAS: "Americas",
+  ASIA: "Asia",
+  EUROPE: "Europe",
+  OCEANIA: "Oceania",
+  ANTARCTIC: "Antarctic",
+};
 
 const PAYS = [];
 
@@ -51,19 +50,20 @@ const getAllCountries = async () => {
     let response = await fetch("https://countries.dev/countries");
     let data = await response.json();
     console.log(typeof data);
+
     //on charge les pays dans une canstante
     //pour economiser les appels d'API
     if (Array.isArray(data)) {
       data.forEach((item) => {
         PAYS.push({
-          nom: item.name,
-          capitale: item.capital,
+          name: item.name,
+          capital: item.capital,
           population: item.population,
-          région: item.region,
-          langues: item.languages
+          region: item.region,
+          languages: item.languages
             ? item.languages.map((l) => l.name).join(", ")
             : "non specifiées",
-          drapeau: item.flags.png || item.flags.svg,
+          flag: item.flags.png || item.flags.svg,
         });
       });
     } else {
@@ -85,19 +85,63 @@ const getAllCountries = async () => {
   }
 };
 
+/**
+ * fonction qui va filtre les pays par region
+ *
+ * @param {string} region - la region
+ * @returns
+ */
+const filterByRegion = (region) => {
+  return PAYS.filter(
+    (item) => item.region.toLowerCase() === region.toLowerCase(),
+  );
+};
 
 /**
- * fonction pour rengar
+ * fonction pour ranger les pays
+ *
+ * @param {Array} - les pays a ranger
  * @param {string} POPULATION - croissante ou decroissante
  * @returns {Array} - pays rangé
  */
-const sortByPopulation = (POPULATION) {
-  return POPULATION === "ASC" ? PAYS.sort((a, b) => a.population - b.population) : PAYS.sort((a, b) => b.population - a.population);
-}
+const sortByPopulation = (pays, POPULATION) => {
+  return POPULATION === "ASC"
+    ? pays.sort((a, b) => a.population - b.population)
+    : pays.sort((a, b) => b.population - a.population);
+};
 
+/**
+ * fonction pour construire le html a afficher
+ *
+ * @param {Array} countries - liste de pays
+ * @returns {true}
+ */
+const countriesToHTML = (countries) => {
+  let countriesTemplate = ``;
+  for (country of countries) {
+    countriesTemplate += `</article> <article class="card">
+                <img src="${country.flag}" alt="drapeau ${country.name}">
+                <div class="card-body">
+                    <h2>${country.name}</h2>
+                    <p>Capitale:<strong> ${country.capital}</strong></p>
+                    <p>Nbre d'habitant: <strong>${country.population.toLocaleString("fr-FR")}</strong> Hbts</p>
+                    <p>Langues:<strong> ${country.languages}</strong></p>
+                </div>
+            </article>`;
+  }
+  return countriesTemplate;
+};
 
+const launchApp = async () => {
+  let allLoaded = await getAllCountries();
 
+  if (allLoaded) {
+    sortie.innerHTML = "";
+    let pays = filterByRegion(REGION.AFRICA);
+    let sortcountries = sortByPopulation(pays, POPULATION.ASC);
+    let countries = countriesToHTML(sortcountries);
+    afficher(countries);
+  }
+};
 
-
-getAllCountries();
-console.log(PAYS);
+launchApp();
