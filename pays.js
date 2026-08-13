@@ -56,7 +56,7 @@ const getAllCountries = async () => {
     if (Array.isArray(data)) {
       data.forEach((item) => {
         PAYS.push({
-          name: item.name,
+          name: item.translations.fr || item.name,
           capital: item.capital,
           population: item.population,
           region: item.region,
@@ -94,6 +94,18 @@ const getAllCountries = async () => {
 const filterByRegion = (region) => {
   return PAYS.filter(
     (item) => item.region.toLowerCase() === region.toLowerCase(),
+  );
+};
+
+/**
+ * fonction pour faire une recherche
+ * un tableau
+ * @param {string} term
+ * @returns {Array} - le ou les pays contenant le terme
+ */
+const fitlerbyTerm = (term) => {
+  return PAYS.filter((item) =>
+    item.name.toLowerCase().includes(term.toLowerCase()),
   );
 };
 
@@ -137,8 +149,13 @@ const launchApp = async () => {
 
   if (allLoaded) {
     sortie.innerHTML = "";
-    let pays = filterByRegion(REGION.AFRICA);
-    let sortcountries = sortByPopulation(pays, POPULATION.ASC);
+    let pays = fitlerbyTerm("");
+    if (pays.length === 0) {
+      afficher(
+        `<p class="error-massage">aucune correspondance n'a été trouvée.</p>`,
+      );
+    }
+    let sortcountries = sortByPopulation(pays, POPULATION.DEC);
     let countries = countriesToHTML(sortcountries);
     afficher(countries);
   }

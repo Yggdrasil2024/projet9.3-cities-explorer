@@ -14,6 +14,25 @@
   --color-accent-hover: #2563eb;
   --color-border: rgba(15, 23, 42, 0.06);
 
+  /* ========================================
+  * couleur du design system de tripadvisor
+  * ====================================== */
+  /* couleurs primaire et secondaires */
+  --trip-green: rgb(52, 224, 161);
+  --trip-pine: #004f32;
+  --trip-moss: #00aa6c;
+  --trip-sand: #faf1ed;
+
+  /* accents */
+  --trip-orchid: #7446af;
+  --trip-salmon: #ff6666;
+  --trip-mustard: #f2b203;
+  --trip-rose: #ffcccc;
+
+  /* neutres */
+  --trip-black: #000000;
+  --trip-white: #ffffff;
+
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -49,8 +68,8 @@ body {
     -apple-system,
     sans-serif;
   line-height: 1.6;
-  color: var(--texte);
-  background: var(--color-bg);
+  color: var(--trip-black);
+  background: var(--trip-white);
   padding: 0;
   margin: 0;
 }
@@ -66,10 +85,10 @@ footer {
 * =====================*/
 header {
   width: 100%;
-  max-width: 1350px;
-  margin-top: var(--space-1);
+
   margin-inline: auto;
-  background-color: rgba(255, 255, 255, 0.6);
+  /*background-color: rgba(var(--trip-green), 0.5);*/
+  background-color: color-mix(in srgb, var(--trip-moss) 24%, transparent);
   backdrop-filter: blur(14px);
   padding: var(--space-2) var(--space-1);
   z-index: 1000;
@@ -79,9 +98,8 @@ header {
   align-items: center;
   gap: var(--space-1);
   position: sticky;
-  top: var(--space-1);
+  top: 0;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
 }
 
@@ -126,13 +144,16 @@ header select:focus {
     width: 100%;
     /*background-color: var(--color-surface);*/
     padding: var(--space-1) var(--space-2);
-
+    max-width: 1350px;
+    margin-top: var(--space-1);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: var(--space-1);
-
+    position: sticky;
+    top: var(--space-1);
+    border-radius: var(--radius-lg);
     border-bottom: 1px solid var(--color-border);
   }
 
@@ -217,12 +238,22 @@ header select:focus {
 .card img {
   border-radius: var(--radius-lg);
   object-fit: cover;
+  width: 100%;
   aspect-ratio: 3/2;
   overflow: hidden;
+  border: 1px solid var(--trip-moss);
 }
 
 .card .card-body {
   padding: var(--space-1);
+}
+
+.card .card-body strong {
+  color: var(--trip-moss);
+}
+
+.card h2 {
+  color: var(--trip-pine);
 }
 
 img {
