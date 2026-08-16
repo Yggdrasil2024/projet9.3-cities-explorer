@@ -56,7 +56,7 @@ const getAllCountries = async () => {
     if (Array.isArray(data)) {
       data.forEach((item) => {
         PAYS.push({
-          name: item.translations.fr || item.name,
+          name: item.translations?.fr || item.name,
           capital: item.capital,
           population: item.population,
           region: item.region,
@@ -131,7 +131,7 @@ const sortByPopulation = (pays, POPULATION) => {
 const countriesToHTML = (countries) => {
   let countriesTemplate = ``;
   for (country of countries) {
-    countriesTemplate += `</article> <article class="card">
+    countriesTemplate += `<article class="card">
                 <img src="${country.flag}" alt="drapeau ${country.name}">
                 <div class="card-body">
                     <h2>${country.name}</h2>
