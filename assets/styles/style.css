@@ -66,7 +66,7 @@ body {
   font-family: "Poppins", "Roboto", Helvetica, sans-serif;
   line-height: 1.5;
   color: var(--trip-black);
-  background: var(--trip-white);
+  background: color-mix(in srgb, var(--trip-black) 2%, transparent 98%);
   padding: 0;
   margin: 0;
 }
